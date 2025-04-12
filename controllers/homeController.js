@@ -20,7 +20,17 @@ const findAllhomes = (req, res) => {
     })
 }
 
+const findById = (req, res) => {
+  ModelHome
+    .findById(req.params.idHome).then(home => {
+      res.status(200).json(home) // Devolver el nuevo hogar creado como respuesta en formato JSON
+    }).catch(error => {
+      res.status(400).json({ message: 'Error al crear el hogar', error }) // Devolver un error si ocurre algo mal
+    })
+}
+
 module.exports = {
   createHome,
-  findAllhomes
+  findAllhomes,
+  findById
 }
