@@ -1,6 +1,6 @@
 const knex = require('../config') // Importar la conexión a la base de datos
 
-const create = (req, res) => {
+const create = (bodyHome) => {
   return knex
     .insert(bodyHome) // bodyHome es el objeto que contiene los datos del nuevo hogar a crear
     .into('homes') // homes es el nombre de la tabla en la base de datos
