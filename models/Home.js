@@ -15,7 +15,16 @@ const findAll = () => {
     .where('active', true) // Filtra los resultados para que solo devuelva los hogares activos
 }
 
+const findById = (houseId) => {
+  return knex
+    .select('*')
+    .from('homes')
+    .where('house_id', houseId)
+    .where('active', true)
+}
+
 module.exports = {
   create,
-  findAll
+  findAll,
+  findById
 }
