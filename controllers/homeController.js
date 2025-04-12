@@ -16,7 +16,7 @@ const findAllhomes = (req, res) => {
     .findAll().then(homes => {
       res.status(200).json(homes) // Devolver el nuevo hogar creado como respuesta en formato JSON
     }).catch(error => {
-      res.status(400).json({ message: 'Error al crear el hogar', error }) // Devolver un error si ocurre algo mal
+      res.status(400).json({ message: 'Error al encontrar el hogar', error }) // Devolver un error si ocurre algo mal
     })
 }
 
@@ -25,12 +25,42 @@ const findById = (req, res) => {
     .findById(req.params.idHome).then(home => {
       res.status(200).json(home) // Devolver el nuevo hogar creado como respuesta en formato JSON
     }).catch(error => {
-      res.status(400).json({ message: 'Error al crear el hogar', error }) // Devolver un error si ocurre algo mal
+      res.status(400).json({ message: 'Error al encontrar el hogar por ID', error }) // Devolver un error si ocurre algo mal
+    })
+}
+
+const updateHome = (req, res) => {
+  ModelHome
+    .update(req.params.idHome, req.body).then(home => {
+      res.status(200).json(home) // Devolver el nuevo hogar creado como respuesta en formato JSON
+    }).catch(error => {
+      res.status(400).json({ message: 'Error al actualizar el hogar', error }) // Devolver un error si ocurre algo mal
+    })
+}
+
+const softDelete = (req, res) => {
+  ModelHome
+    .softDelete(req.params.idHome).then(home => {
+      res.status(204).json(home)
+    }).catch(error => {
+      res.status(400).json({ message: 'Error al volver inactivo el hogar', error }) // Devolver un error si ocurre algo mal
+    })
+}
+
+const destroy = (req, res) => {
+  ModelHome
+    .destroy(req.params.idHome).then(home => {
+      res.status(204).json(home)
+    }).catch(error => {
+      res.status(400).json({ message: 'Error al borrar el hogar', error }) // Devolver un error si ocurre algo mal
     })
 }
 
 module.exports = {
   createHome,
   findAllhomes,
-  findById
+  findById,
+  updateHome,
+  softDelete,
+  destroy
 }
