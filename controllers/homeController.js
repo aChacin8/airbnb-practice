@@ -11,6 +11,16 @@ const createHome = (req, res) => {
     })
 }
 
+const findAllhomes = (req, res) => {
+  ModelHome
+    .findAll().then(homes => {
+      res.status(200).json(homes) // Devolver el nuevo hogar creado como respuesta en formato JSON
+    }).catch(error => {
+      res.status(400).json({ message: 'Error al crear el hogar', error }) // Devolver un error si ocurre algo mal
+    })
+}
+
 module.exports = {
-  createHome // Exportar la función createHome para que pueda ser utilizada en otros archivos
+  createHome,
+  findAllhomes
 }
