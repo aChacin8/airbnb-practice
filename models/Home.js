@@ -9,5 +9,5 @@ const create = (bodyHome) => {
 }
 
 module.exports = {
-    create // Exportar la función create para que pueda ser utilizada en otros archivos
+  create // Exportar la función create para que pueda ser utilizada en otros archivos
 }
