@@ -9,10 +9,10 @@ const create = (bodyHome) => {
 }
 
 const findAll = () => {
-    return knex
-        .select('*') // Selecciona todos los campos de la tabla
-        .from('homes') // homes es el nombre de la tabla en la base de datos
-        .where ('active', true) // Filtra los resultados para que solo devuelva los hogares activos
+  return knex
+    .select('*') // Selecciona todos los campos de la tabla
+    .from('homes') // homes es el nombre de la tabla en la base de datos
+    .where('active', true) // Filtra los resultados para que solo devuelva los hogares activos
 }
 
 module.exports = {
